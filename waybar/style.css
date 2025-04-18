@@ -1,0 +1,221 @@
+@import "./theme.css";
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FiraCode Mono, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: @base;
+    color: @text;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 10%;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px @subtle;
+}
+
+/* you can set a style on hover for any module like this */
+#network:hover,
+#idle_inhibitor:hover,
+#custom-pacman:hover,
+#custom-notifications:hover,
+#cpu:hover,
+#memory:hover,
+#pulseaudio:hover {
+    background-color: @highlightMed;
+}
+
+#workspaces button {
+    background-color: @overlay;
+    color: @text;
+}
+
+#workspaces button.active {
+    background: @highlightMed;
+    box-shadow: inset 0 -3px @subtle;
+}
+
+#workspaces button:hover {
+    background: @highlightLow;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#custom-weather,
+#custom-pacman,
+#custom-vpn,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#custom-notifications,
+#mpd {
+    padding: 0 10px;
+    color: @subtle;
+    background-color: @overlay;
+    margin: 0 4px;
+    border-radius: 10%;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+label:focus {
+    background-color: @surface;
+}
+
+/*#clock {*/
+/*    background-color: @foam;*/
+/*    color: @overlay;*/
+/*}*/
+
+/*#cpu {*/
+/*    background-color: @foam;*/
+/*    color: @overlay;*/
+/*}*/
+/**/
+/*#memory {*/
+/*    background-color: @foam;*/
+/*    color: @overlay;*/
+/*}*/
+/**/
+/*#disk {*/
+/*}*/
+/**/
+/*#backlight {*/
+/*}*/
+/**/
+/*#network {*/
+/*    background-color: @iris;*/
+/*    color: @overlay;*/
+/*}*/
+/**/
+/*#network.disconnected {*/
+/*    background-color: @overlay;*/
+/*    color: @muted;*/
+/*}*/
+/**/
+/*#pulseaudio {*/
+/*    background-color: @iris;*/
+/*    color: @overlay;*/
+/*}*/
+/**/
+/*#pulseaudio.muted {*/
+/*    background-color: @overlay;*/
+/*    color: @muted;*/
+/*}*/
+/**/
+/*#wireplumber {*/
+/*}*/
+/**/
+/*#wireplumber.muted {*/
+/*    background-color: #f53c3c;*/
+/*}*/
+/**/
+/*#custom-media {*/
+/*}*/
+/**/
+/*#custom-media.custom-spotify {*/
+/*    background-color: #66cc99;*/
+/*}*/
+/**/
+/*#custom-media.custom-vlc {*/
+/*    background-color: #ffa000;*/
+/*}*/
+/**/
+/*#temperature {*/
+/*    background-color: @rose;*/
+/*    color: @overlay;*/
+/*}*/
+/**/
+/*#temperature.critical {*/
+/*    background-color: @love;*/
+/*}*/
+/**/
+/*#tray > .passive {*/
+/*    -gtk-icon-effect: dim;*/
+/*}*/
+/**/
+/*#tray > .needs-attention {*/
+/*    -gtk-icon-effect: highlight;*/
+/*    background-color: #eb4d4b;*/
+/*}*/
+/**/
+/*#mpd {*/
+/*    background-color: #66cc99;*/
+/*    color: #2a5c45;*/
+/*}*/
+/**/
+/*#mpd.disconnected {*/
+/*    background-color: #f53c3c;*/
+/*}*/
+/**/
+/*#mpd.stopped {*/
+/*    background-color: #90b1b1;*/
+/*}*/
+/**/
+/*#mpd.paused {*/
+/*    background-color: #51a37a;*/
+/*}*/
+/**/
+/*#scratchpad {*/
+/*    background: rgba(0, 0, 0, 0.2);*/
+/*}*/
+/**/
+/*#scratchpad.empty {*/
+/*	background-color: transparent;*/
+/*}*/
+/**/
+/*#privacy-item.audio-in {*/
+/*    background-color: #1ca000;*/
+/*}*/
+/**/
+/*#privacy-item.audio-out {*/
+/*    background-color: #0069d4;*/
+/*}*/
+/**/

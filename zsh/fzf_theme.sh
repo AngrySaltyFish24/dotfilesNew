@@ -1,0 +1,1 @@
+/home/james/.config/scripts/themes/fzf-main/dist/rose-pine-moon.sh
