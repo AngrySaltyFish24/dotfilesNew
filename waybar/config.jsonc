@@ -77,8 +77,9 @@
     },
     "custom/vpn": {
         "interval": 1,
-        "format": "<big>{icon}</big>",
-        "exec": "jq --unbuffered --compact-output -n '$ARGS.named' --arg alt \"`~/.config/scripts/check_vpn.sh`\"",
+        "format": "{text}<big>{icon}</big>",
+        "exec": "jq --unbuffered --compact-output -n '$ARGS.named' --arg alt \"`~/.config/scripts/check_vpn.sh`\" --arg text \"`nmcli connection show --active | awk -v vpn='vpn' '$3==vpn{print $1}'` \"",
+        "data": "test",
         "return-type": "json",
         "format-icons": {
             "true": "󰒍",

@@ -3,49 +3,62 @@ local config = {}
 function config.which_key_config()
 	local wk = require("which-key")
 
-	wk.register({
-		f = {
-			name = "find",
-			f = { "Find Files" },
-			g = { "Find Git Files" },
-			b = { "Find Buffers" },
-			s = { "Find String" },
-			r = { "Find Symbols" },
+	wk.add({
+		{ "<leader>a", desc = "Add buffer to harpoon" },
+
+		{ "<leader>d", group = "Debug adapter" },
+		{ "<leader>db", desc = "toggle breakpoint" },
+		{ "<leader>dc", desc = "continue" },
+		{ "<leader>dp", desc = "run last" },
+		{ "<leader>dq", desc = "terminate" },
+		{ "<leader>dr", desc = "run test method" },
+
+		{ "<leader>ds", group = "Step" },
+		{ "<leader>dsi", desc = "step into" },
+		{ "<leader>dso", desc = "step over" },
+		{ "<leader>dsq", desc = "step out" },
+		{ "<leader>dv", desc = "toggle repl" },
+
+		{ "<leader>f", group = "find" },
+		{ "<leader>fb", desc = "Find Buffers" },
+		{ "<leader>ff", desc = "Find Files" },
+		{ "<leader>fg", desc = "Find Git Files" },
+		{ "<leader>fr", desc = "Find Symbols" },
+		{ "<leader>fs", desc = "Find String" },
+
+		{ "<leader>h", group = "Git Signs hunk" },
+		{ "<leader>hR", desc = "Reset buffer" },
+		{ "<leader>hS", desc = "Stage buffer" },
+		{ "<leader>hb", desc = "Toggle blame line" },
+		{ "<leader>hp", desc = "Preview diff" },
+		{ "<leader>hr", desc = "Reset hunk" },
+		{ "<leader>hs", desc = "Stage hunk" },
+		{ "<leader>hu", desc = "undo stage hunk" },
+
+		{ "<leader>pv", desc = "File Manager" },
+
+		{ "<leader>u", desc = "Toggle undo tree" },
+
+		{
+			"<leader>b",
+			group = "buffers",
+			expand = function()
+				-- TODO: Make this mnemic
+
+				return require("which-key.extras").expand.buf()
+			end,
 		},
-		a = { "Add buffer to harpoon" },
-		u = { "Toggle undo tree" },
-		p = {
-			v = { "File Manager" },
-		},
-		d = {
-			name = "Debug adapter",
-			b = { "toggle breakpoint" },
-			c = { "continue" },
-			r = { "run test method" },
-			p = { "run last" },
-			v = { "toggle repl" },
-			q = { "terminate" },
-			s = {
-				name = "Step",
-				o = { "step over" },
-				i = { "step into" },
-				q = { "step out" },
-			},
-		},
-		h = {
-			name = "Git Signs hunk",
-			s = { "Stage hunk" },
-			r = { "Reset hunk" },
-			S = { "Stage buffer" },
-			u = { "undo stage hunk" },
-			R = { "Reset buffer" },
-			p = { "Preview diff" },
-			b = { "Toggle blame line" },
-		},
-	}, { prefix = "<leader>" })
+	})
 end
 
 function config.marks_config()
 	require("marks").setup({})
 end
+
+function render_markdown()
+	require("render-markdown").setup({
+		completions = { lsp = { enabled = true } },
+	})
+end
+
 return config

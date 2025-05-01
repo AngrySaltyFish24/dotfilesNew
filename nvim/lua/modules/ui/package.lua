@@ -17,7 +17,6 @@ package({
 })
 
 local theme_file = os.getenv("XDG_CONFIG_HOME") .. "/nvim/lua/modules/ui/color_scheme.txt"
-print()
 
 local function set_theme()
 	local file = io.open(theme_file, "r")
@@ -55,4 +54,12 @@ package({
 package({
 	"chentoast/marks.nvim",
 	config = conf.marks_config,
+})
+package({
+	"MeanderingProgrammer/render-markdown.nvim",
+	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+	---@module 'render-markdown'
+	---@type render.md.UserConfig
+	opts = {},
+	config = conf.render_markdown,
 })
