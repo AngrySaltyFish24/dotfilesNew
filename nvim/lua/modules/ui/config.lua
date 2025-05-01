@@ -4,6 +4,40 @@ function config.which_key_config()
 	local wk = require("which-key")
 
 	wk.add({
+		-- Move line under selection
+		{ "J", ":m '>+1<CR>gv=gv", mode = "v" },
+		{ "K", ":m '<-2<CR>gv=gv", mode = "v" },
+
+		-- Scroll half page and recenter
+		{ "<C-d>", "<C-d>zz" },
+		{ "<C-u>", "<C-u>zz" },
+
+		-- goto next/prev error
+		{
+			"<C-,>",
+			function()
+				vim.diagnostic.goto_prev()
+			end,
+		},
+		{
+			"<C-.>",
+			function()
+				vim.diagnostic.goto_next()
+			end,
+		},
+
+		-- bash shortcut to goto end/begining of line
+		{ "<C-e>", "<c-o>A", mode = "i" },
+		{ "<C-a>", "<c-o>^", mode = "i" },
+
+		{ "<leader>st", desc = "Take a screenshot (TODO)", function() end },
+
+		-- Copy to clipboard
+		{ "<leader>y", '"+y', desc = "Copy to clipboard" },
+		{ "<leader>y", '"+y', mode = "v", desc = "Copy to clipboard" },
+		{ "<leader>Y", '"+Y', desc = "Copy to clipboard" },
+
+		{ "<leader>pv", "<CMD>Oil<CR>", desc = "File browser" },
 		{ "<leader>a", desc = "Add buffer to harpoon" },
 
 		{ "<leader>d", group = "Debug adapter" },

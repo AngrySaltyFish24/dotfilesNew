@@ -41,6 +41,11 @@ function config.lspconfig()
 		vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
 	end
 
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
 	require("neoconf").setup()
 	local lspconfig = require("lspconfig")
 	for _, lsp in ipairs(servers) do

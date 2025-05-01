@@ -94,25 +94,4 @@ setmetatable(helper, {
 	end,
 })
 
-local screenshot_path = "screenshots"
-
-function helper.screenshot()
-	if not helper.isdir(screenshot_path) then
-		vim.fn.mkdir(screenshot_path)
-	end
-
-	os.execute(
-		"scrot -s -e 'mv $f "
-			.. screenshot_path
-			.. " && echo ./"
-			.. screenshot_path
-			.. "/$f > "
-			.. screenshot_path
-			.. "/path'"
-	)
-end
-
-function helper.screenshot_path()
-	vim.cmd("r !cat " .. screenshot_path .. "/path")
-end
 return helper

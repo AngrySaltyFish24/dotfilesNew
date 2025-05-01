@@ -1,28 +1,28 @@
 local g, fn = vim.g, vim.fn
-local helper = require('core.helper')
+local helper = require("core.helper")
 -- remove check is windows because I only use mac or linux
-local cache_dir = helper.path_join(vim.fn.stdpath('cache'), 'nvim')
+local cache_dir = helper.path_join(vim.fn.stdpath("cache"), "nvim")
 
 -- Create cache dir and subs dir
 local createdir = function()
-  -- TODO: Remove directories that are not needed here
-  local data_dir = {
-    cache_dir .. 'backup',
-    cache_dir .. 'session',
-    cache_dir .. 'swap',
-    cache_dir .. 'tags',
-    cache_dir .. 'undo',
-  }
-  -- There only check once that If cache_dir exists
-  -- Then I don't want to check subs dir exists
-  if fn.isdirectory(cache_dir) == 0 then
-    os.execute('mkdir -p ' .. cache_dir)
-    for _, v in pairs(data_dir) do
-      if fn.isdirectory(v) == 0 then
-        os.execute('mkdir -p ' .. v)
-      end
-    end
-  end
+	-- TODO: Remove directories that are not needed here
+	local data_dir = {
+		cache_dir .. "backup",
+		cache_dir .. "session",
+		cache_dir .. "swap",
+		cache_dir .. "tags",
+		cache_dir .. "undo",
+	}
+	-- There only check once that If cache_dir exists
+	-- Then I don't want to check subs dir exists
+	if fn.isdirectory(cache_dir) == 0 then
+		os.execute("mkdir -p " .. cache_dir)
+		for _, v in pairs(data_dir) do
+			if fn.isdirectory(v) == 0 then
+				os.execute("mkdir -p " .. v)
+			end
+		end
+	end
 end
 
 createdir()
@@ -47,9 +47,8 @@ g.loaded_rrhelper = 1
 -- g.loaded_netrwSettings = 1
 -- g.loaded_netrwFileHandlers = 1
 
-require('core.options')
-require('core.remap')
-require('core.pack'):boot_strap()
+require("core.options")
+require("core.pack"):boot_strap()
 
 -- local builtin = require("telescope.builtin")
 -- vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- Search normal files
