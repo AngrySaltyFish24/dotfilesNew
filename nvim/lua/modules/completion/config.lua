@@ -19,6 +19,8 @@ function config.lspconfig()
 		"stylua",
 		"isort",
 		"black",
+		"marksman",
+		"prettierd",
 	}
 	local mason_registry = require("mason-registry")
 
