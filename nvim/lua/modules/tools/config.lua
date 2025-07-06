@@ -170,4 +170,33 @@ function config.kitty_scrollback()
 	require("kitty-scrollback").setup()
 end
 
+function config.mason_callback()
+
+	local servers = { "rust_analyzer", "basedpyright", "ts_ls", "lua_ls" }
+
+	require("mason").setup({
+		ensured_installed = servers,
+	})
+
+	local mason_tools = {
+		"basedpyright",
+		"typescript-language-server",
+		"lua-language-server",
+		"stylua",
+		"isort",
+		"black",
+		"marksman",
+		"prettierd",
+	}
+	local mason_registry = require("mason-registry")
+
+	for _, pkg_name in ipairs(mason_tools) do
+		local pkg = mason_registry.get_package(pkg_name)
+
+		if not pkg:is_installed() then
+			pkg:install()
+		end
+	end
+end
+
 return config

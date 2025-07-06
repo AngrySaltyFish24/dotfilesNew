@@ -85,3 +85,8 @@ package({
 	event = { "User KittyScrollbackLaunch" },
 	opts = {},
 })
+
+package({
+"williamboman/mason.nvim",
+config = conf.mason_callback,
+})
